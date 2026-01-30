@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emission Trends | Carbon Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="trends-body">
+    
+    <nav class="navbar">
+        <div class="nav-logo">
+            <i class="fa-solid fa-leaf"></i> CarbonTracker
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="scorecard.html" style="color: #166534; font-weight: bold;">Leaderboard</a></li>
+            <li><a href="auditor-register.html">For Auditors</a></li>
+        </ul>
+
+        <div id="authSection">
+            <div id="publicNav">
+                <button onclick="location.href='index.html#portal-section'" class="navbar-btn btn-login-nav">
+                    <i class="fa-solid fa-user"></i> Login
+                </button>
+            </div>
+            <div id="privateNav" style="display: none;">
+                <button onclick="location.href='company-dashboard.html'" class="navbar-btn btn-panel-nav">
+                    <i class="fa-solid fa-building"></i> My Portal
+                </button>
+                <button id="btnLogout" class="navbar-btn btn-logout-nav">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <header class="trends-header">
+            <h1>Global Emission Trends</h1>
+            <p>Real-time analytics for <span id="companyNameDisplay" style="font-weight: bold; color: #166534;">Global Market</span></p>
+        </header>
+
+        <div id="alertContainer" class="alert-box" style="display: none; max-width: 1200px; margin: 0 auto 30px; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <span style="font-size: 1.5rem;">⚠️</span>
+                <div>
+                    <strong style="color: #856404; font-size: 1.1rem;">Action Required</strong>
+                    <p id="alertMessage" style="color: #856404; margin-bottom: 0;">You have pending reports.</p>
+                </div>
+            </div>
+            <button onclick="location.href='company-dashboard.html'" style="background: white; border: 1px solid #856404; color: #856404; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: bold;">Review</button>
+        </div>
+
+        <div class="metrics-grid">
+            <div class="metric-card green">
+                <h3>Total Emissions</h3>
+                <p class="big-number" id="totalEmissions">0.00</p>
+                <span style="color: #64748b;">tCO₂e (All Time)</span>
+            </div>
+            <div class="metric-card blue">
+                <h3>Annual Change</h3>
+                <p class="big-number" id="yoyValue">--%</p>
+                <small id="yoyContext" style="color: #64748b;">Vs. previous year</small>
+            </div>
+            <div class="metric-card orange">
+                <h3 id="thirdCardTitle">Total Reports</h3>
+                <p class="big-number" id="pendingCount">0</p>
+                <small id="thirdCardContext" style="color: #64748b;">Submitted to ledger</small>
+            </div>
+        </div>
+
+        <div class="charts-grid">
+            <div class="chart-container">
+                <h3 style="margin-bottom: 20px; color: #1e293b;">Emission History</h3>
+                <canvas id="timeChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3 style="margin-bottom: 20px; color: #1e293b;">Source Breakdown</h3>
+                <canvas id="categoryChart"></canvas>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-bottom">&copy; 2026 CarbonTracker Network. All rights reserved.</div>
+    </footer>
+
+    <script type="module" src="dashboard.js"></script>
+</body>
+</html>

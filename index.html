@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Emission Tracker | Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-logo">
+            <i class="fa-solid fa-leaf"></i> CarbonTracker
+        </div>
+        <ul class="nav-links">
+            <li><a href="dashboard.html">View Trends</a></li>
+            <li><a href="scorecard.html">Leaderboard</a></li>
+            
+            <li class="dropdown">
+                <a href="#" class="dropbtn signup-btn" style="color: white !important; background: #166534; padding: 8px 20px; border-radius: 20px;">
+                    Register <i class="fa-solid fa-caret-down"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="company-register.html"><i class="fa-solid fa-building"></i> Register Company</a>
+                    <a href="auditor-register.html"><i class="fa-solid fa-clipboard-check"></i> Register Auditor</a>
+                </div>
+            </li>
+
+            <li>
+                <button id="navWalletLogin" class="signup-btn" style="background: #f59e0b; display: flex; align-items: center; gap: 8px; border:none; cursor:pointer;">
+                    <i class="fa-solid fa-wallet"></i> Auditor Login
+                </button>
+            </li>
+
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Email Login <i class="fa-solid fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="#" id="navCompanyLogin">🏢 Company Login</a>
+                    <a href="#" id="navAuditorLogin">🎓 Auditor Login</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <header class="hero-section">
+        <video autoplay muted loop playsinline class="back-video">
+            <source src="https://videos.pexels.com/video-files/3129957/3129957-uhd_2560_1440_25fps.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <h1>SECURE THE FUTURE.</h1>
+            <p>The global standard for verified sustainability tracking and carbon auditing.</p>
+            
+            <div style="display: flex; gap: 15px; justify-content: center; margin-top: 30px;">
+                <button class="btn-hero" onclick="document.getElementById('portal-section').scrollIntoView({behavior: 'smooth'})">
+                    Get Started
+                </button>
+                <button id="heroWalletLogin" class="btn-hero" style="background: #f59e0b; color: white; border: none;">
+                    <i class="fa-brands fa-ethereum"></i> Auditor Access
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="portal-section" class="portal-container">
+        <div class="card" id="card-company">
+            <div class="icon">🏢</div>
+            <h2>Company Portal</h2>
+            <p>Log emissions and track your footprint.</p>
+            
+            <div id="companyCollapse" class="login-collapse">
+                <div class="input-wrapper">
+                    <input type="email" id="companyEmail" placeholder="Company Email">
+                    <input type="password" id="companyPassword" placeholder="Password">
+                    <button id="companyLoginBtn" class="btn-primary">Secure Login</button>
+                </div>
+            </div>
+            <button id="btnExpandCompany" class="btn-secondary expand-trigger">Login to Account</button>
+        </div>
+
+        <div class="card" id="card-auditor">
+            <div class="icon">🎓</div>
+            <h2>Auditor Portal</h2>
+            <p>Review and certify company data.</p>
+            
+            <div id="auditorCollapse" class="login-collapse">
+                <div class="input-wrapper">
+                    <input type="email" id="auditorEmail" placeholder="Auditor Email">
+                    <input type="password" id="auditorPassword" placeholder="Password">
+                    <button id="auditorLoginBtn" class="btn-primary">Access Ledger</button>
+                </div>
+            </div>
+            <button id="btnExpandAuditor" class="btn-secondary expand-trigger">Verify Data</button>
+        </div>
+
+        <div class="card feature-card">
+            <div class="icon">🏆</div>
+            <h2>Public Scorecard</h2>
+            <p>View top-performing sustainable companies.</p>
+            <button onclick="location.href='scorecard.html'" class="btn-full">View Rankings</button>
+        </div>
+
+        <div class="card feature-card">
+            <div class="icon">📈</div>
+            <h2>Trend Dashboard</h2>
+            <p>Explore global emission insights.</p>
+            <button onclick="location.href='dashboard.html'" class="btn-full">Open Dashboard</button>
+        </div>
+    </main>
+    
+    <footer class="site-footer">
+        <div class="footer-bottom">
+            &copy; 2026 CarbonTracker Network. All rights reserved.
+        </div>
+    </footer>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

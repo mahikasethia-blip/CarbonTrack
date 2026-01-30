@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Portal | Carbon Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body class="company-body">
+
+    <nav class="navbar">
+        <div class="nav-logo" style="color: #166534;">
+            <i class="fa-solid fa-industry"></i> CarbonTracker
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Global Trends</a></li>
+            <li><a href="scorecard.html">Leaderboard</a></li>
+            </ul>
+
+        <button id="logoutBtn" class="navbar-btn btn-logout-nav" style="padding: 8px 20px; border-radius: 20px;">
+            Logout <i class="fa-solid fa-right-from-bracket"></i>
+        </button>
+    </nav>
+
+    <header class="company-header">
+        <h1>Emission Logging Portal</h1>
+        <p>Securely record your monthly environmental impact data.</p>
+    </header>
+
+    <main class="company-container">
+        <div class="input-card">
+            
+            <h3 class="section-title"><i class="fa-solid fa-building"></i> Company Details</h3>
+            <div class="input-grid" style="grid-template-columns: 2fr 1fr 1fr; margin-bottom: 30px;">
+                <div class="input-group">
+                    <label>Company Name</label>
+                    <input type="text" id="company_name" placeholder="e.g. Sethia Industries">
+                </div>
+                <div class="input-group">
+                    <label>State</label>
+                    <input type="text" id="state" placeholder="e.g. California">
+                </div>
+                <div class="input-group">
+                    <label>City</label>
+                    <input type="text" id="city" placeholder="e.g. San Francisco">
+                </div>
+            </div>
+
+            <h3 class="section-title"><i class="fa-solid fa-bolt"></i> Consumption Metrics</h3>
+            <div class="input-grid">
+                <div class="input-group">
+                    <label>⚡ Electricity (kWh)</label>
+                    <input type="number" id="elec" placeholder="0.00">
+                </div>
+                <div class="input-group">
+                    <label>⛽ Fuel Consumption (Liters)</label>
+                    <input type="number" id="fuel" placeholder="0.00">
+                </div>
+                <div class="input-group">
+                    <label>✈️ Business Travel (km)</label>
+                    <input type="number" id="travel" placeholder="0.00">
+                </div>
+                <div class="input-group">
+                    <label>🗑️ Waste Generated (kg)</label>
+                    <input type="number" id="waste" placeholder="0.00">
+                </div>
+                <div class="input-group" style="grid-column: span 2;">
+                    <label>🌱 Carbon Offsets Purchased (tCO₂e)</label>
+                    <input type="number" id="offsets" placeholder="0.00">
+                </div>
+            </div>
+
+            <div class="live-preview">
+                <h4>ESTIMATED NET IMPACT</h4>
+                <div class="impact-value"><span id="co2Val">0.000</span> tCO₂e</div>
+            </div>
+
+            <button id="submitData" class="btn-primary" style="margin-top: 30px; padding: 16px; font-size: 1.1rem; box-shadow: 0 10px 20px rgba(0,0,0,0.1);" disabled>
+                <i class="fa-solid fa-cloud-arrow-up"></i> Submit Report
+            </button>
+
+        </div>
+    </main>
+
+    <div id="reportModal" class="modal">
+        <div class="modal-content" style="max-width: 500px; text-align: center; border-radius: 20px;">
+            <span class="close-btn" id="closeReportModal">&times;</span>
+            <div class="modal-header">
+                <h2 style="color: #166534;">Sustainability Report</h2>
+            </div>
+            
+            <p style="color: #64748b; margin-bottom: 25px;">Manage your official annual report.</p>
+            
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <button id="btnGeneratePDF" class="btn-primary" style="background: #2563eb;">
+                    <i class="fa-solid fa-file-invoice"></i> Auto-Generate PDF
+                </button>
+                
+                <div style="display: flex; align-items: center; gap: 10px; margin: 10px 0;">
+                    <hr style="flex:1; border-color: #eee;"> <span style="color:#aaa; font-size: 0.8rem;">OR</span> <hr style="flex:1; border-color: #eee;">
+                </div>
+
+                <button id="btnOpenDrive" class="btn-secondary">
+                    <i class="fa-brands fa-google-drive"></i> Open Linked File
+                </button>
+                
+                <div style="background: #f8fafc; padding: 15px; border-radius: 10px; margin-top: 10px; text-align: left;">
+                    <label style="font-size: 0.85rem; font-weight: bold; color: #334155;">Update Drive Link</label>
+                    <div style="display: flex; gap: 8px; margin-top: 5px;">
+                        <input type="url" id="driveLinkInput" placeholder="https://drive.google.com/..." style="font-size: 0.9rem; border: 1px solid #cbd5e1;">
+                        <button id="btnSaveLink" class="btn-primary" style="width: auto; padding: 0 20px;">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer" style="background: transparent; border-top: 1px solid rgba(22, 101, 52, 0.1); margin-top: auto;">
+        <div class="footer-bottom" style="color: #65a30d;">
+            &copy; 2026 CarbonTracker. Verified Emissions Data.
+        </div>
+    </footer>
+
+    <script type="module" src="company-dashboard.js"></script>
+</body>
+</html>

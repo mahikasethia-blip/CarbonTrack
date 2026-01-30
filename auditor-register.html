@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auditor Application | Carbon Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-logo" style="color: #2563eb;">
+            <i class="fa-solid fa-magnifying-glass-chart"></i> CarbonTracker <span style="font-weight: 400; color: #64748b; font-size: 0.9rem; margin-left: 5px;">| Auditor Portal</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#portal-section">Login</a>
+        </div>
+    </nav>
+
+    <main class="auth-page">
+        <div class="glass-card auditor-theme">
+            <div class="auth-header">
+                <div style="font-size: 3rem; margin-bottom: 10px;">🎓</div>
+                <h2>Auditor Application</h2>
+                <p>Verify and certify environmental impact data</p>
+            </div>
+            
+            <form id="auditorRegForm">
+                <div class="input-group">
+                    <label>Full Legal Name</label>
+                    <input type="text" id="audName" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Certification ID / License Number</label>
+                    <input type="text" id="audCert" placeholder="e.g. ISO-14064-2026-X89" required>
+                    <small style="color: #64748b; font-size: 0.8rem;">Required for verification authority.</small>
+                </div>
+
+                <div class="input-group" style="margin-top: 25px; border-top: 1px solid #e2e8f0; padding-top: 20px;">
+                    <label>Professional Email</label>
+                    <input type="email" id="audEmail" placeholder="auditor@firm.com" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Create Password</label>
+                    <input type="password" id="audPass" placeholder="••••••••" required>
+                </div>
+                
+                <div class="button-group" style="display: flex; gap: 15px; margin-top: 20px;">
+                    <button type="submit" class="btn-primary">Submit Application</button>
+                    <button type="button" class="btn-secondary" onclick="window.location.href='index.html'" style="width: auto;">Cancel</button>
+                </div>
+            </form>
+
+            <p class="auth-footer">Already an auditor? <a href="index.html" style="color: #2563eb;">Login here</a></p>
+        </div>
+    </main>
+
+    <script type="module" src="auditor-register.js"></script>
+</body>
+</html>

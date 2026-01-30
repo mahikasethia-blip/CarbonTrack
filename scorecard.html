@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Scorecard | Carbon Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="scorecard-body">
+
+    <nav class="navbar">
+        <div class="nav-logo" style="color: #166534;">
+            <i class="fa-solid fa-trophy"></i> CarbonTracker
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="scorecard.html" class="active-green">Leaderboard</a></li>
+            <li><a href="dashboard.html">Global Trends</a></li>
+            
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Portals <i class="fa-solid fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="company-register.html">Company Portal</a>
+                    <a href="auditor-register.html">Auditor Portal</a>
+                </div>
+            </li>
+        </ul>
+
+        <div id="authSection">
+            <div id="publicNav">
+                <button onclick="location.href='index.html#portal-section'" class="navbar-btn btn-login-nav">
+                    Login
+                </button>
+            </div>
+            <div id="privateNav" style="display: none;">
+                <button id="logoutBtn" class="navbar-btn btn-logout-nav" style="padding: 8px 20px; border-radius: 20px;">
+                    Logout <i class="fa-solid fa-right-from-bracket"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="scorecard-header">
+        <h1>Sustainability Leaderboard</h1>
+        <p>Recognizing top-performing companies committed to a transparent, net-zero future.</p>
+    </header>
+
+    <main class="scorecard-container">
+        
+        <div class="controls-container">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Search companies, cities, or states...">
+            </div>
+            <div style="font-size: 0.9rem; color: #166534;">
+                <i class="fa-solid fa-sort"></i> Click headers to sort
+            </div>
+        </div>
+
+        <div class="scorecard-wrapper">
+            <table class="scorecard-table">
+                <thead>
+                    <tr>
+                        <th width="10%" onclick="window.sortTable('rank')">Rank <i class="fa-solid fa-sort"></i></th>
+                        <th width="30%" onclick="window.sortTable('company')">Company <i class="fa-solid fa-sort"></i></th>
+                        <th width="20%" onclick="window.sortTable('location')">Location <i class="fa-solid fa-sort"></i></th>
+                        <th width="25%" onclick="window.sortTable('emissions')">Verified Emissions <i class="fa-solid fa-sort"></i></th>
+                        <th width="15%" onclick="window.sortTable('grade')">Grade <i class="fa-solid fa-sort"></i></th>
+                    </tr>
+                </thead>
+                <tbody id="scorecardTableBody">
+                    <tr><td colspan="5" style="text-align:center; padding: 40px; color: #64748b;">
+                        <i class="fa-solid fa-circle-notch fa-spin"></i> Loading verified data...
+                    </td></tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer class="site-footer" style="background: transparent; border-top: 1px solid rgba(22, 101, 52, 0.1); margin-top: auto;">
+        <div class="footer-bottom" style="color: #166534;">
+            &copy; 2026 CarbonTracker Network. Publicly Verifiable Data.
+        </div>
+    </footer>
+
+    <script type="module" src="scorecard.js"></script>
+</body>
+</html>

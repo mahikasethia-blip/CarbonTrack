@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verified Logs | Auditor Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="auditor-body">
+
+    <nav class="navbar">
+        <div class="nav-logo" style="color: #166534;">
+            <i class="fa-solid fa-file-shield"></i> CarbonTracker
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="auditor-dashboard.html">Review Queue</a></li>
+            <li><a href="auditor-logs.html" style="color: #166534; font-weight: bold;">Verified Logs</a></li>
+            <li><a href="dashboard.html">Global Trends</a></li>
+            <li><a href="scorecard.html">Public Grades</a></li>
+        </ul>
+
+        <button id="logoutBtn" class="btn-logout-nav" style="background: #fee2e2; color: #ef4444; border: 1px solid #fca5a5; padding: 8px 16px; border-radius: 20px; font-weight: 600; cursor: pointer; transition: 0.2s;">
+            Logout <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        </button>
+    </nav>
+
+    <header class="auditor-header">
+        <h1>Verification Audit Trail</h1>
+        <p>Immutable blockchain-backed history of all verification actions, grades, and compliance checks.</p>
+    </header>
+
+    <main class="auditor-container">
+        <div class="auditor-wrapper">
+            <table class="auditor-table">
+                <thead>
+                    <tr>
+                        <th width="15%">Timestamp</th>
+                        <th width="25%">Company</th>
+                        <th width="15%">Action</th>
+                        <th width="10%" style="text-align: center;">Grade</th>
+                        <th width="20%">Auditor Notes</th>
+                        <th width="15%">Blockchain Hash</th>
+                    </tr>
+                </thead>
+                <tbody id="logsTableBody">
+                    <tr>
+                        <td colspan="6" style="text-align:center; padding: 50px; color: #64748b;">
+                            <i class="fa-solid fa-circle-notch fa-spin"></i> Loading secure logs...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer class="site-footer" style="background: transparent; border-top: 1px solid #e2e8f0; margin-top: auto;">
+        <div class="footer-bottom">
+            &copy; 2026 CarbonTracker Network. Secure Audit Ledger.
+        </div>
+    </footer>
+
+    <script type="module" src="auditor-logs.js"></script>
+</body>
+</html>
