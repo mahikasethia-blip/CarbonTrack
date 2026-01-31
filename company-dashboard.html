@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Company Portal | Carbon Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -14,7 +15,7 @@
 <body class="company-body">
 
     <nav class="navbar">
-        <div class="nav-logo" style="color: #166534;">
+        <div class="nav-logo">
             <i class="fa-solid fa-industry"></i> CarbonTracker
         </div>
         
@@ -24,7 +25,7 @@
             <li><a href="scorecard.html">Leaderboard</a></li>
             </ul>
 
-        <button id="logoutBtn" class="navbar-btn btn-logout-nav" style="padding: 8px 20px; border-radius: 20px;">
+        <button id="logoutBtn" class="navbar-btn btn-logout-nav">
             Logout <i class="fa-solid fa-right-from-bracket"></i>
         </button>
     </nav>
@@ -38,7 +39,7 @@
         <div class="input-card">
             
             <h3 class="section-title"><i class="fa-solid fa-building"></i> Company Details</h3>
-            <div class="input-grid" style="grid-template-columns: 2fr 1fr 1fr; margin-bottom: 30px;">
+            <div class="input-grid grid-2-1-1">
                 <div class="input-group">
                     <label>Company Name</label>
                     <input type="text" id="company_name" placeholder="e.g. Sethia Industries">
@@ -71,7 +72,7 @@
                     <label>🗑️ Waste Generated (kg)</label>
                     <input type="number" id="waste" placeholder="0.00">
                 </div>
-                <div class="input-group" style="grid-column: span 2;">
+                <div class="input-group span-2">
                     <label>🌱 Carbon Offsets Purchased (tCO₂e)</label>
                     <input type="number" id="offsets" placeholder="0.00">
                 </div>
@@ -82,7 +83,7 @@
                 <div class="impact-value"><span id="co2Val">0.000</span> tCO₂e</div>
             </div>
 
-            <button id="submitData" class="btn-primary" style="margin-top: 30px; padding: 16px; font-size: 1.1rem; box-shadow: 0 10px 20px rgba(0,0,0,0.1);" disabled>
+            <button id="submitData" class="btn-primary" disabled>
                 <i class="fa-solid fa-cloud-arrow-up"></i> Submit Report
             </button>
 
@@ -90,10 +91,10 @@
     </main>
 
     <div id="reportModal" class="modal">
-        <div class="modal-content" style="max-width: 500px; text-align: center; border-radius: 20px;">
+        <div class="modal-content modal-medium">
             <span class="close-btn" id="closeReportModal">&times;</span>
             <div class="modal-header">
-                <h2 style="color: #166534;">Sustainability Report</h2>
+                <h2 class="accent">Sustainability Report</h2>
             </div>
             
             <p style="color: #64748b; margin-bottom: 25px;">Manage your official annual report.</p>
@@ -122,9 +123,29 @@
         </div>
     </div>
 
-    <footer class="site-footer" style="background: transparent; border-top: 1px solid rgba(22, 101, 52, 0.1); margin-top: auto;">
-        <div class="footer-bottom" style="color: #65a30d;">
-            &copy; 2026 CarbonTracker. Verified Emissions Data.
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><i class="fa-solid fa-leaf"></i> CarbonTracker</h3>
+                <p>Building a sustainable future through verified carbon tracking.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="company-register.html">Register Company</a></li>
+                    <li><a href="auditor-register.html">Register Auditor</a></li>
+                    <li><a href="dashboard.html">View Trends</a></li>
+                    <li><a href="scorecard.html">Leaderboard</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p><i class="fa-solid fa-envelope"></i> <strong>Email:</strong> support@carbontracker.com</p>
+                <p><i class="fa-solid fa-phone"></i> <strong>Phone:</strong> +1 (800) 123-4567</p>
+                <p><i class="fa-solid fa-location-dot"></i> <strong>Address:</strong> 123 Green Street, Eco City, EC 12345</p>
+            </div>
         </div>
     </footer>
 

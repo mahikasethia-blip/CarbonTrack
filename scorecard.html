@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Public Scorecard | Carbon Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="scorecard-body">
 
     <nav class="navbar">
-        <div class="nav-logo" style="color: #166534;">
+        <div class="nav-logo">
             <i class="fa-solid fa-trophy"></i> CarbonTracker
         </div>
         
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="scorecard.html" class="active-green">Leaderboard</a></li>
             <li><a href="dashboard.html">Global Trends</a></li>
             
             <li class="dropdown">
@@ -34,8 +34,8 @@
                     Login
                 </button>
             </div>
-            <div id="privateNav" style="display: none;">
-                <button id="logoutBtn" class="navbar-btn btn-logout-nav" style="padding: 8px 20px; border-radius: 20px;">
+            <div id="privateNav" class="private-nav">
+                <button id="logoutBtn" class="navbar-btn btn-logout-nav">
                     Logout <i class="fa-solid fa-right-from-bracket"></i>
                 </button>
             </div>
@@ -54,7 +54,7 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="text" id="searchInput" placeholder="Search companies, cities, or states...">
             </div>
-            <div style="font-size: 0.9rem; color: #166534;">
+            <div class="muted small accent">
                 <i class="fa-solid fa-sort"></i> Click headers to sort
             </div>
         </div>
@@ -71,7 +71,7 @@
                     </tr>
                 </thead>
                 <tbody id="scorecardTableBody">
-                    <tr><td colspan="5" style="text-align:center; padding: 40px; color: #64748b;">
+                    <tr><td colspan="5" class="center-muted">
                         <i class="fa-solid fa-circle-notch fa-spin"></i> Loading verified data...
                     </td></tr>
                 </tbody>
@@ -79,9 +79,29 @@
         </div>
     </main>
 
-    <footer class="site-footer" style="background: transparent; border-top: 1px solid rgba(22, 101, 52, 0.1); margin-top: auto;">
-        <div class="footer-bottom" style="color: #166534;">
-            &copy; 2026 CarbonTracker Network. Publicly Verifiable Data.
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><i class="fa-solid fa-leaf"></i> CarbonTracker</h3>
+                <p>Building a sustainable future through verified carbon tracking.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="company-register.html">Register Company</a></li>
+                    <li><a href="auditor-register.html">Register Auditor</a></li>
+                    <li><a href="dashboard.html">View Trends</a></li>
+                    <li><a href="scorecard.html">Leaderboard</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p><i class="fa-solid fa-envelope"></i> <strong>Email:</strong> support@carbontracker.com</p>
+                <p><i class="fa-solid fa-phone"></i> <strong>Phone:</strong> +1 (800) 123-4567</p>
+                <p><i class="fa-solid fa-location-dot"></i> <strong>Address:</strong> 123 Green Street, Eco City, EC 12345</p>
+            </div>
         </div>
     </footer>
 

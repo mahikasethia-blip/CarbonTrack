@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Business | Carbon Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -23,7 +24,7 @@
     <main class="auth-page">
         <div class="glass-card">
             <div class="auth-header">
-                <div style="font-size: 3rem; margin-bottom: 10px;">🏢</div>
+                <div class="page-icon">🏢</div>
                 <h2>Register Business</h2>
                 <p>Join the verified sustainability network</p>
             </div>
@@ -53,10 +54,10 @@
                 <div class="form-group">
                      <label>Sustainability Report Link (URL)</label>
                     <input type="url" id="regReport" placeholder="https://drive.google.com/..." required>
-                    <small style="color: #64748b; font-size: 0.8rem;">Link to your PDF report (Google Drive/Dropbox)</small>
+                    <small class="muted small">Link to your PDF report (Google Drive/Dropbox)</small>
                 </div>
 
-                <div class="input-group" style="margin-top: 25px; border-top: 1px solid #e2e8f0; padding-top: 20px;">
+                <div class="input-group group-separated">
                     <label>Business Email</label>
                     <input type="email" id="regEmail" placeholder="admin@company.com" required>
                 </div>

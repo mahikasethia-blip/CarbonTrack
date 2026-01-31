@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carbon Emission Tracker | Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
@@ -15,23 +16,17 @@
             <i class="fa-solid fa-leaf"></i> CarbonTracker
         </div>
         <ul class="nav-links">
-            <li><a href="dashboard.html">View Trends</a></li>
-            <li><a href="scorecard.html">Leaderboard</a></li>
+            <li><a href="dashboard.html" class="plain-link">View Trends</a></li>
+            <li><a href="scorecard.html" class="plain-link">Leaderboard</a></li>
             
             <li class="dropdown">
-                <a href="#" class="dropbtn signup-btn" style="color: white !important; background: #166534; padding: 8px 20px; border-radius: 20px;">
+                <a href="#" class="dropbtn signup-btn" style="color: white !important;">
                     Register <i class="fa-solid fa-caret-down"></i>
                 </a>
                 <div class="dropdown-content">
                     <a href="company-register.html"><i class="fa-solid fa-building"></i> Register Company</a>
                     <a href="auditor-register.html"><i class="fa-solid fa-clipboard-check"></i> Register Auditor</a>
                 </div>
-            </li>
-
-            <li>
-                <button id="navWalletLogin" class="signup-btn" style="background: #f59e0b; display: flex; align-items: center; gap: 8px; border:none; cursor:pointer;">
-                    <i class="fa-solid fa-wallet"></i> Auditor Login
-                </button>
             </li>
 
             <li class="dropdown">
@@ -60,8 +55,8 @@
                 <button class="btn-hero" onclick="document.getElementById('portal-section').scrollIntoView({behavior: 'smooth'})">
                     Get Started
                 </button>
-                <button id="heroWalletLogin" class="btn-hero" style="background: #f59e0b; color: white; border: none;">
-                    <i class="fa-brands fa-ethereum"></i> Auditor Access
+                <button id="heroWalletLogin" class="btn-hero" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; border: none; display: flex; align-items: center; justify-content: center;">
+                    <i class="fab fa-ethereum" style="margin-right: 8px;"></i> Auditor Access
                 </button>
             </div>
         </div>
@@ -84,7 +79,7 @@
         </div>
 
         <div class="card" id="card-auditor">
-            <div class="icon">🎓</div>
+            <div class="icon"><i class="fab fa-ethereum" style="font-size: 2.5rem; color: #2D5016;"></i></div>
             <h2>Auditor Portal</h2>
             <p>Review and certify company data.</p>
             
@@ -97,25 +92,31 @@
             </div>
             <button id="btnExpandAuditor" class="btn-secondary expand-trigger">Verify Data</button>
         </div>
-
-        <div class="card feature-card">
-            <div class="icon">🏆</div>
-            <h2>Public Scorecard</h2>
-            <p>View top-performing sustainable companies.</p>
-            <button onclick="location.href='scorecard.html'" class="btn-full">View Rankings</button>
-        </div>
-
-        <div class="card feature-card">
-            <div class="icon">📈</div>
-            <h2>Trend Dashboard</h2>
-            <p>Explore global emission insights.</p>
-            <button onclick="location.href='dashboard.html'" class="btn-full">Open Dashboard</button>
-        </div>
     </main>
     
     <footer class="site-footer">
-        <div class="footer-bottom">
-            &copy; 2026 CarbonTracker Network. All rights reserved.
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><i class="fa-solid fa-leaf"></i> CarbonTracker</h3>
+                <p>Building a sustainable future through verified carbon tracking.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="company-register.html">Register Company</a></li>
+                    <li><a href="auditor-register.html">Register Auditor</a></li>
+                    <li><a href="dashboard.html">View Trends</a></li>
+                    <li><a href="scorecard.html">Leaderboard</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p><i class="fa-solid fa-envelope"></i> <strong>Email:</strong> support@carbontracker.com</p>
+                <p><i class="fa-solid fa-phone"></i> <strong>Phone:</strong> +1 (800) 123-4567</p>
+                <p><i class="fa-solid fa-location-dot"></i> <strong>Address:</strong> 123 Green Street, Eco City, EC 12345</p>
+            </div>
         </div>
     </footer>
 
