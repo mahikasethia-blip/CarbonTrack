@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
 </head>
 <body class="trends-body">
     
@@ -76,12 +76,26 @@
 
         <div class="charts-grid">
             <div class="chart-container">
-                <h3 class="section-title">Emission History</h3>
-                <canvas id="timeChart"></canvas>
+                <h3 class="section-title"><i class="fa-solid fa-chart-line"></i> Emission History</h3>
+                <div id="timeChartPlaceholder" class="chart-placeholder visible">
+                    <i class="fa-solid fa-chart-line chart-placeholder-icon"></i>
+                    <p>No emission data yet</p>
+                    <span class="muted">Submit reports to see trends over time</span>
+                </div>
+                <div id="timeChartWrap" class="chart-wrapper hidden">
+                    <canvas id="timeChart" aria-label="Emission history line chart"></canvas>
+                </div>
             </div>
             <div class="chart-container">
-                <h3 class="section-title">Source Breakdown</h3>
-                <canvas id="categoryChart"></canvas>
+                <h3 class="section-title"><i class="fa-solid fa-pie-chart"></i> Source Breakdown</h3>
+                <div id="categoryChartPlaceholder" class="chart-placeholder visible">
+                    <i class="fa-solid fa-pie-chart chart-placeholder-icon"></i>
+                    <p>No category data yet</p>
+                    <span class="muted">Breakdown by electricity, fuel, travel & waste</span>
+                </div>
+                <div id="categoryChartWrap" class="chart-wrapper hidden">
+                    <canvas id="categoryChart" aria-label="Emission source breakdown doughnut chart"></canvas>
+                </div>
             </div>
         </div>
     </main>

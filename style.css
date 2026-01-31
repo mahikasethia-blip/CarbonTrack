@@ -904,7 +904,7 @@ td {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
 }
 .metric-card.green { 
-    border-left-color: #d1d5db;
+    border-left-color: var(--green-light);
     background: white;
 }
 .metric-card.blue { 
@@ -935,17 +935,86 @@ td {
 
 .chart-container {
     background: white;
-    padding: 30px;
+    padding: 24px;
     border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    height: 450px;
+    box-shadow: 0 4px 20px rgba(45, 80, 22, 0.08);
+    min-height: 380px;
     position: relative;
     border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-container .section-title {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.chart-container .section-title i {
+    color: var(--green-primary);
+}
+
+/* Chart wrapper: gives canvas a defined height so Chart.js renders correctly */
+.chart-wrapper {
+    position: relative;
+    flex: 1;
+    min-height: 280px;
+    width: 100%;
+}
+
+.chart-wrapper.hidden {
+    display: none !important;
+}
+
+.chart-wrapper canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 320px;
+}
+
+/* No-data placeholder */
+.chart-placeholder {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-height: 280px;
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 24px;
+}
+
+.chart-placeholder.visible {
+    display: flex;
+}
+
+.chart-placeholder.hidden {
+    display: none !important;
+}
+
+.chart-placeholder-icon {
+    font-size: 3rem;
+    color: var(--border-color);
+    margin-bottom: 12px;
+}
+
+.chart-placeholder p {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
 }
 
 @media (max-width: 900px) {
-    .charts-grid { grid-template-columns: 1fr; height: auto; }
-    .chart-container { height: 350px; }
+    .charts-grid { grid-template-columns: 1fr; }
+    .chart-container { min-height: 340px; }
+    .chart-wrapper { min-height: 260px; }
+    .chart-wrapper canvas { max-height: 280px; }
 } 
 
 /* =========================================
