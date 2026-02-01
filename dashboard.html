@@ -28,14 +28,6 @@
                     <i class="fa-solid fa-user"></i> Login
                 </button>
             </div>
-            <div id="privateNav" class="private-nav">
-                <button onclick="location.href='company-dashboard.html'" class="navbar-btn btn-panel-nav">
-                    <i class="fa-solid fa-building"></i> My Portal
-                </button>
-                <button id="btnLogout" class="navbar-btn btn-logout-nav">
-                    Logout
-                </button>
-            </div>
         </div>
     </nav>
 
@@ -56,23 +48,18 @@
             <button onclick="location.href='company-dashboard.html'" class="btn-outline-warning">Review</button>
         </div>
 
-        <div class="metrics-grid">
+        <div class="metrics-grid two-cards">
             <div class="metric-card green">
                 <h3>Total Emissions</h3>
                 <p class="big-number" id="totalEmissions">0.00</p>
                 <span class="muted">tCO₂e (All Time)</span>
-            </div>
-            <div class="metric-card blue">
-                <h3>Annual Change</h3>
-                <p class="big-number" id="yoyValue">--%</p>
-                <small id="yoyContext" class="muted">Vs. previous year</small>
             </div>
             <div class="metric-card orange">
                 <h3 id="thirdCardTitle">Total Reports</h3>
                 <p class="big-number" id="pendingCount">0</p>
                 <small id="thirdCardContext" class="muted">Submitted to ledger</small>
             </div>
-        </div>
+        </div>”},{
 
         <div class="charts-grid">
             <div class="chart-container">

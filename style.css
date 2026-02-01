@@ -877,6 +877,18 @@ td {
     padding: 0 20px;
 }
 
+/* Two-card specific layout: center and keep equal width */
+.metrics-grid.two-cards {
+    grid-template-columns: repeat(2, minmax(320px, 1fr));
+    gap: 34px;
+    justify-content: center;
+    max-width: 900px;
+}
+
+@media (max-width: 900px) {
+    .metrics-grid.two-cards { grid-template-columns: 1fr; padding: 0 12px; max-width: 100%; }
+}
+
 .metric-card {
     background: white;
     padding: 30px;

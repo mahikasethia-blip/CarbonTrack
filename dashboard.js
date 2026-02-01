@@ -449,20 +449,7 @@ async function loadAnalytics(uid, isPrivate) {
             }
         }
 
-        // YoY
-        const yoyEl = document.getElementById('yoyValue');
-        if (yoyEl) {
-            if (lastYearSum > 0) {
-                const change = ((thisYearSum - lastYearSum) / lastYearSum) * 100;
-                const sign = change > 0 ? '+' : '';
-                yoyEl.innerText = `${sign}${change.toFixed(1)}%`;
-                yoyEl.style.color = change > 0 ? "#ef4444" : "#10b981";
-            } else {
-                yoyEl.innerText = "N/A";
-            }
-        }
-
-        renderCharts(dates, impacts, cats);
+        renderCharts(dates, impacts, cats);”},{
 
     } catch (error) {
         console.error("Dashboard Logic Error:", error);
@@ -488,10 +475,7 @@ function updateUIEmptyState() {
     const pendingEl = document.getElementById('pendingCount');
     if (pendingEl) pendingEl.innerText = "0";
 
-    const yoyEl = document.getElementById('yoyValue');
-    if (yoyEl) yoyEl.innerText = "N/A";
-
-    // 3. Show "No Data" placeholders (use wrapper text so canvas isn't relied on)
+    // 3. Show "No Data" placeholders (use wrapper text so canvas isn't relied on)”},{
     const timePlaceholder = document.getElementById('timeChartPlaceholder');
     const categoryPlaceholder = document.getElementById('categoryChartPlaceholder');
     if (timePlaceholder) { timePlaceholder.classList.add('visible'); timePlaceholder.classList.remove('hidden'); }
