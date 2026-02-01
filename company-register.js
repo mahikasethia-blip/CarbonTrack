@@ -43,12 +43,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     verifiedStatus: "pending"
                 });
 
-                alert("Registration Successful!");
+                showNotification("Registration Successful!", "success");
                 window.location.href = "company-dashboard.html";
 
             } catch (error) {
                 console.error("Error:", error);
-                alert("Registration Error: " + error.message);
+                showNotification("Registration Error: " + error.message, "error");
             }
         });
     }  

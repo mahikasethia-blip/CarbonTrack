@@ -6,6 +6,9 @@ import { signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/
 
 let auditorDocId = null;
 
+// Small safe wrapper: use showNotification when available, else fallback to console
+const notify = (msg, type='info', opts) => { try { if (typeof window.showNotification === 'function') window.showNotification(msg, type, opts); else console.log(`[${type.toUpperCase()}] ${msg}`); } catch(e){ console.warn('Notify failed:', e); } };
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // 1. UNIFIED AUTH LISTENER
@@ -16,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (user.isAnonymous) {
                 console.log("🦊 Wallet Session Detected. Requesting Connection...");
                 
-                // === THIS IS WHERE WE FORCE THE REQUEST ===
                 if (typeof window.ethereum !== 'undefined') {
                     try {
                         const provider = new window.ethers.providers.Web3Provider(window.ethereum);
@@ -25,37 +27,47 @@ document.addEventListener('DOMContentLoaded', () => {
                         const accounts = await provider.send("eth_requestAccounts", []);
                         const walletAddress = accounts[0].toLowerCase();
                         
-                        // Find Auditor Profile in DB
+                        // Update UI immediately with short wallet address (even if not registered)
+                        const profileBadge = document.getElementById('auditorProfileDisplay');
+                        const shortAddr = walletAddress.substring(0, 6) + "..." + walletAddress.slice(-4);
+                        if(profileBadge) {
+                            profileBadge.innerHTML = `
+                                <div style="display:flex; align-items:center; gap:8px;">
+                                    <i class="fa-solid fa-wallet"></i> 
+                                    <span style="font-weight:700;">${shortAddr}</span>
+                                    <span style="font-size:0.7rem; background:#166534; color:white; padding:2px 6px; border-radius:4px;">WEB3</span>
+                                </div>
+                            `;
+                        }
+
+                        // Find Auditor Profile in DB (optional)
                         const q = query(collection(db, "auditors"), where("walletAddress", "==", walletAddress));
                         const snap = await getDocs(q);
 
                         if(!snap.empty) {
                             auditorDocId = snap.docs[0].id;
-                            
-                            // UPDATE UI WITH SHORT ADDRESS (BuildChain Style)
-                            const profileBadge = document.getElementById('auditorProfileDisplay');
-                            if(profileBadge) {
-                                const shortAddr = walletAddress.substring(0, 6) + "..." + walletAddress.substring(38);
+                            // If profile has a name, show it
+                            const name = snap.docs[0].data().name;
+                            if(profileBadge && name) {
                                 profileBadge.innerHTML = `
                                     <div style="display:flex; align-items:center; gap:8px;">
-                                        <i class="fa-solid fa-wallet"></i> 
-                                        <span>${shortAddr}</span>
+                                        <i class="fa-solid fa-user-check"></i>
+                                        <span style="font-weight:700;">${name}</span>
                                         <span style="font-size:0.7rem; background:#166534; color:white; padding:2px 6px; border-radius:4px;">WEB3</span>
                                     </div>
                                 `;
                             }
                         } else {
-                            // If wallet connected but no profile found (rare edge case if manual deletion)
-                            alert("Auditor profile not found.");
-                            window.location.href = "index.html";
+                            // Wallet connected but no auditor profile found — inform user but do NOT redirect
+                            notify("Wallet connected, but no auditor profile found. Visit Register to complete your profile.", "warning");
                         }
                     } catch (err) {
                         console.error("Wallet Access Denied:", err);
-                        alert("Please allow wallet access to continue.");
-                        window.location.href = "index.html";
+                        notify("Please allow wallet access to continue.", "warning");
+                        // Do not redirect — allow user to try again
                     }
                 } else {
-                    alert("MetaMask not found.");
+                    notify("MetaMask not found.", "warning");
                 }
 
             } else {
@@ -81,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         tableBody.innerHTML = ''; 
 
         if (snapshot.empty) {
-            tableBody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 40px;">No submissions found in queue.</td></tr>';
+            tableBody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 40px; color:#64748b;">No submissions found in queue.</td></tr>';
             return;
         }
 
@@ -130,6 +142,10 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             tableBody.appendChild(row);
         });
+    }, (err) => {
+        console.error("Snapshot error:", err);
+        tableBody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 40px; color:#ef4444;">Error loading queue.</td></tr>';
+        notify("Failed to load review queue: " + (err.message || err), "error");
     });
 
     // 3. Handle Verification Actions
@@ -138,9 +154,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const newStatus = e.target.value;
             const docId = e.target.dataset.id;
             
-            if(newStatus === 'verified' && !confirm(`Verify report?`)) {
-                e.target.value = 'pending';
-                return;
+            if (newStatus === 'verified') {
+                const ok = await showConfirm(`Verify report?`);
+                if(!ok) { e.target.value = 'pending'; return; }
             }
 
             const gradeVal = document.getElementById(`grade-${docId}`).value;
@@ -173,10 +189,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             } catch (error) {
                 console.error("Error:", error);
-                alert("Update failed: " + error.message);
+                notify("Update failed: " + error.message, "error");
             }
         }
-    });
+    };
     
     // History Modal Logic
     tableBody.addEventListener('click', async (e) => {

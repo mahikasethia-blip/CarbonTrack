@@ -15,30 +15,30 @@
             <i class="fa-solid fa-trophy"></i> CarbonTracker
         </div>
         
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="dashboard.html">Global Trends</a></li>
-            
-            <li class="dropdown">
-                <a href="#" class="dropbtn">Portals <i class="fa-solid fa-caret-down"></i></a>
-                <div class="dropdown-content">
-                    <a href="company-register.html">Company Portal</a>
-                    <a href="auditor-register.html">Auditor Portal</a>
-                </div>
-            </li>
-        </ul>
+        <div id="authSection" style="display:flex; align-items:center; gap:20px;">
+            <ul class="nav-links" style="margin:0;">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html">Global Trends</a></li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Portals <i class="fa-solid fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="company-register.html">Company Portal</a>
+                        <a href="auditor-register.html">Auditor Portal</a>
+                    </div>
+                </li>
+            </ul>
 
-        <div id="authSection">
             <div id="publicNav">
                 <button onclick="location.href='index.html#portal-section'" class="navbar-btn btn-login-nav">
                     Login
                 </button>
             </div>
-            <div id="privateNav" class="private-nav">
+            <!-- <div id="privateNav" class="private-nav">
                 <button id="logoutBtn" class="navbar-btn btn-logout-nav">
                     Logout <i class="fa-solid fa-right-from-bracket"></i>
                 </button>
-            </div>
+            </div> -->
         </div>
     </nav>
 
@@ -54,9 +54,9 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="text" id="searchInput" placeholder="Search companies, cities, or states...">
             </div>
-            <div class="muted small accent">
+            <!-- <div class="muted small accent">
                 <i class="fa-solid fa-sort"></i> Click headers to sort
-            </div>
+            </div> -->
         </div>
 
         <div class="scorecard-wrapper">

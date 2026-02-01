@@ -28,12 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     createdAt: serverTimestamp()
                 });
 
-                alert("Auditor Account Created! Redirecting to Dashboard...");
+                showNotification("Auditor Account Created! Redirecting to Dashboard...", "success");
                 window.location.href = "auditor-dashboard.html";
 
             } catch (error) {
                 console.error("Registration Error:", error);
-                alert("Error: " + error.message);
+                showNotification("Error: " + error.message, "error");
             }
         });
     }

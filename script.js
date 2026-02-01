@@ -14,7 +14,7 @@ async function handleLogin(role) {
     const pass = passInput.value;
 
     if (!email || !pass) {
-        alert("Please enter both email and password.");
+        showNotification("Please enter both email and password.", "warning");
         return;
     }
 
@@ -31,7 +31,7 @@ async function handleLogin(role) {
         
     } catch (error) {
         console.error("Login Error:", error);
-        alert("Login Failed: " + error.message);
+        showNotification("Login Failed: " + error.message, "error");
         btn.innerText = originalText;
         btn.disabled = false;
     }
@@ -40,7 +40,7 @@ async function handleLogin(role) {
 // 2. AUDITOR-ONLY WALLET LOGIN (Auto-Register Logic)
 async function handleWalletLogin() {
     if (typeof window.ethereum === 'undefined') {
-        alert("MetaMask is not installed. Please install it to use this feature.");
+        showNotification("MetaMask is not installed. Please install it to use this feature.", "warning");
         return;
     }
 
@@ -85,7 +85,7 @@ async function handleWalletLogin() {
 
     } catch (error) {
         console.error("Wallet Login Error:", error);
-        alert("Login Error: " + error.message);
+        showNotification("Login Error: " + error.message, "error");
         if(btn) btn.innerText = "Login with Wallet";
     }
 }

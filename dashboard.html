@@ -19,7 +19,6 @@
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="scorecard.html" class="accent-link">Leaderboard</a></li>
-            <li><a href="auditor-register.html">For Auditors</a></li>
         </ul>
 
         <div id="authSection">
@@ -48,42 +47,87 @@
             <button onclick="location.href='company-dashboard.html'" class="btn-outline-warning">Review</button>
         </div>
 
-        <div class="metrics-grid two-cards">
+        <!-- Metrics Row -->
+        <div class="metrics-grid three-cards">
             <div class="metric-card green">
                 <h3>Total Emissions</h3>
                 <p class="big-number" id="totalEmissions">0.00</p>
                 <span class="muted">tCO₂e (All Time)</span>
             </div>
-            <div class="metric-card orange">
+
+            <div class="metric-card gold">
                 <h3 id="thirdCardTitle">Total Reports</h3>
                 <p class="big-number" id="pendingCount">0</p>
-                <small id="thirdCardContext" class="muted">Submitted to ledger</small>
+                <small id="thirdCardContext" class="muted">Submitted across network</small>
             </div>
-        </div>”},{
 
-        <div class="charts-grid">
-            <div class="chart-container">
+            <div class="metric-card">
+                <h3>YoY Change</h3>
+                <p class="big-number" id="yoyValue">N/A</p>
+                <small class="muted">Compared to last year</small>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls-container" style="align-items:center; gap:18px;">
+            <div style="display:flex; gap:12px; align-items:center;">
+                <label class="muted" style="font-weight:700;">Filter:</label>
+                <select id="yearFilter" style="padding:8px 10px; border-radius:8px; border:1px solid #e6f4ea;">
+                    <option value="all">All Years</option>
+                    <option value="2026">2026</option>
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                </select>
+            </div>
+
+            <div class="search-box" style="flex:1; max-width:420px;">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInputFilter" placeholder="Search company, city or state...">
+            </div>
+
+            <div class="muted small accent" style="white-space:nowrap;">
+                <i class="fa-solid fa-info-circle"></i> Live network data
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="charts-grid" style="align-items:flex-start;">
+            <div class="chart-container" style="flex:2; min-width: 320px;">
                 <h3 class="section-title"><i class="fa-solid fa-chart-line"></i> Emission History</h3>
                 <div id="timeChartPlaceholder" class="chart-placeholder visible">
                     <i class="fa-solid fa-chart-line chart-placeholder-icon"></i>
                     <p>No emission data yet</p>
                     <span class="muted">Submit reports to see trends over time</span>
                 </div>
-                <div id="timeChartWrap" class="chart-wrapper hidden">
+                <div id="timeChartWrap" class="chart-wrapper hidden" style="height: 360px;">
                     <canvas id="timeChart" aria-label="Emission history line chart"></canvas>
                 </div>
             </div>
-            <div class="chart-container">
-                <h3 class="section-title"><i class="fa-solid fa-pie-chart"></i> Source Breakdown</h3>
-                <div id="categoryChartPlaceholder" class="chart-placeholder visible">
-                    <i class="fa-solid fa-pie-chart chart-placeholder-icon"></i>
-                    <p>No category data yet</p>
-                    <span class="muted">Breakdown by electricity, fuel, travel & waste</span>
+
+            <div style="flex:1; min-width:280px; display:flex; flex-direction:column; gap:20px;">
+                <div class="chart-container" style="height:260px;">
+                    <h3 class="section-title"><i class="fa-solid fa-pie-chart"></i> Source Breakdown</h3>
+                    <div id="categoryChartPlaceholder" class="chart-placeholder visible">
+                        <i class="fa-solid fa-pie-chart chart-placeholder-icon"></i>
+                        <p>No category data yet</p>
+                        <span class="muted">Breakdown by electricity, fuel, travel & waste</span>
+                    </div>
+                    <div id="categoryChartWrap" class="chart-wrapper hidden" style="height:200px;">
+                        <canvas id="categoryChart" aria-label="Emission source breakdown doughnut chart"></canvas>
+                    </div>
                 </div>
-                <div id="categoryChartWrap" class="chart-wrapper hidden">
-                    <canvas id="categoryChart" aria-label="Emission source breakdown doughnut chart"></canvas>
+
+                <div class="metric-card" style="padding: 16px;">
+                    <h4 style="margin-bottom:6px;">Top Contributors</h4>
+                    <ul id="topContributors" style="list-style:none; padding-left:0; margin-top:8px;">
+                        <li class="muted">No data yet</li>
+                    </ul>
                 </div>
             </div>
+        </div>
+
+        <div style="margin-top:18px; font-size:0.9rem; color:#64748b;">
+            Data source: Aggregated verified submissions on the CarbonTracker Network.
         </div>
     </main>
 

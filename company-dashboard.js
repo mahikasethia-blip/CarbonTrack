@@ -119,15 +119,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 // === RESTORED PDF LOGIC ===
-                if(confirm("✅ Report Submitted! Download Receipt?")) {
-                    generateReceiptPDF(currentData, simulatedHash);
-                }
-                
-                location.reload(); 
+                showNotification("✅ Report Submitted! Click to download receipt.", "success", { actionText: "Download", actionCallback: () => generateReceiptPDF(currentData, simulatedHash), duration: 6000 });
+                setTimeout(() => location.reload(), 1500); 
 
             } catch (error) {
                 console.error("Submission Error:", error);
-                alert("Failed: " + error.message);
+                showNotification("Failed: " + error.message, "error");
                 submitBtn.disabled = false;
                 submitBtn.innerText = "Submit Report";
             }
@@ -203,8 +200,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if(link && companyDocId) {
             try {
                 await updateDoc(doc(db, "companies", companyDocId), { sustainabilityReport: link });
-                alert("Link Saved!");
-            } catch(e) { alert("Error saving link"); }
+                showNotification("Link Saved!", "success");
+            } catch(e) { showNotification("Error saving link", "error"); }
         }
     });
     
@@ -214,6 +211,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('btnGeneratePDF').addEventListener('click', () => {
-       alert("Feature coming soon: Auto-generate full report.");
+       showNotification("Feature coming soon: Auto-generate full report.", "info");
     });
 });
