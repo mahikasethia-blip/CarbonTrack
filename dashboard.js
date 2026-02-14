@@ -449,9 +449,9 @@ async function loadAnalytics(uid, isPrivate) {
             }
         }
 
-        renderCharts(dates, impacts, cats);”},{
+        renderCharts(dates, impacts, cats);}
 
-    } catch (error) {
+     catch (error) {
         console.error("Dashboard Logic Error:", error);
     }
 }

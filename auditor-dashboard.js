@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 notify("Update failed: " + error.message, "error");
             }
         }
-    };
+    });
     
     // History Modal Logic
     tableBody.addEventListener('click', async (e) => {
